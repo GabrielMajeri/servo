@@ -49,6 +49,7 @@ os.environ["TASKCLUSTER_PROXY_URL"] = "http://taskcluster"
 os.environ["NEW_AMI_WORKER_TYPE"] = "-"
 import decision_task
 decision_task.decisionlib.subprocess = MagicMock()
+decision_task.decisionlib.subprocess.check_output = lambda *a, **k: b"check_output"
 
 print("\n# Push:")
 decision_task.main("github-push")
